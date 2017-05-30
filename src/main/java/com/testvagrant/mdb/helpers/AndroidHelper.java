@@ -1,0 +1,91 @@
+package com.testvagrant.mdb.helpers;
+
+
+import com.testvagrant.mdb.builders.DeviceDetailsBuilder;
+import com.testvagrant.mdb.core.CommandExecutor;
+import com.testvagrant.mdb.core.Mobile;
+import com.testvagrant.mdb.entities.DeviceDetails;
+import com.testvagrant.mdb.enums.DeviceType;
+import com.testvagrant.mdb.enums.Platform;
+import com.testvagrant.mdb.enums.Status;
+
+import java.util.List;
+
+import static com.testvagrant.mdb.utils.Commands.AndroidCommands.GET_DEVICE_MODEL;
+import static com.testvagrant.mdb.utils.Commands.AndroidCommands.GET_DEVICE_OS;
+
+public class AndroidHelper {
+
+    private List<DeviceDetails> deviceDetails;
+    private CommandExecutor commandExecutor;
+
+    public AndroidHelper(List<DeviceDetails> deviceDetails) {
+        this.deviceDetails = deviceDetails;
+        this.commandExecutor = new CommandExecutor();
+    }
+
+
+    public void initEmulators(List<String> processLog) {
+        for (String process : processLog) {
+            if (isEmulator(process)) {
+                String udid = getUID(process);
+                String model = getModel(udid);
+                String osVersion = getOSVersion(udid);
+                DeviceDetails emulator = new DeviceDetailsBuilder()
+                        .withDeviceUdid(udid)
+                        .withDeviceName(model)
+                        .withPlatform(Platform.ANDROID)
+                        .withDeviceType(DeviceType.EMULATOR)
+                        .withStatus(Status.AVAILABLE)
+                        .withOSVersion(Mobile.getOSVersion(Platform.ANDROID,osVersion))
+                        .build();
+                deviceDetails.add(emulator);
+            }
+        }
+    }
+
+    public void initADevices(List<String> processLog) {
+        for (String process : processLog) {
+            if (isADevice(process)) {
+                String udid = getUID(process);
+                String model = getModel(udid);
+                String osVersion = getOSVersion(udid);
+                DeviceDetails aDevice = new DeviceDetailsBuilder()
+                        .withDeviceUdid(udid)
+                        .withDeviceName(model)
+                        .withPlatform(Platform.ANDROID)
+                        .withOSVersion(Mobile.getOSVersion(Platform.ANDROID,osVersion))
+                        .withDeviceType(DeviceType.DEVICE)
+                        .withStatus(Status.AVAILABLE)
+                        .build();
+                deviceDetails.add(aDevice);
+            }
+        }
+
+    }
+
+    private String getUID(String process) {
+        String uid = "";
+        int uidLastChar = process.indexOf(" ");
+        uid = process.substring(0, uidLastChar);
+        return uid;
+    }
+
+    private String getModel(String UID) {
+        String command = String.format(GET_DEVICE_MODEL, UID);
+        return commandExecutor.exec(command).asLine().replace("\n", "");
+    }
+
+    private String getOSVersion(String UID) {
+        String command = String.format(GET_DEVICE_OS, UID);
+        return commandExecutor.exec(command).asLine().replace("\n", "");
+    }
+
+    private boolean isEmulator(String process) {
+        return process.contains("vbox") || process.startsWith("emulator");
+    }
+
+    private boolean isADevice(String process) {
+        return !process.contains("vbox") && !process.startsWith("emulator") && !process.startsWith("* daemon");
+    }
+}

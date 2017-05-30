@@ -4,7 +4,7 @@ package com.testvagrant.mdb.enums;
 public interface OSVersion {
 
 
-    double getVersionNumber();
+    double getVersion();
 
     String getName();
 

@@ -1,4 +1,4 @@
-package com.testvagrant.mdb;
+package com.testvagrant.mdb.core;
 
 
 import com.testvagrant.mdb.entities.DeviceDetails;
@@ -32,20 +32,4 @@ public interface MDB {
      * @return list of all devices by udid
      */
     List<DeviceDetails> getDevices(Predicate<DeviceDetails> deviceFilter,Predicate<DeviceDetails> deviceFilter2, Predicate<DeviceDetails> deviceFilter3);
-
-
-    /**
-     * Captures device model, i.e name
-     * @param deviceUDID
-     * @return device model
-     */
-    String getDeviceModel(String deviceUDID);
-
-
-    /**
-     * Captures device OS version
-     * @param deviceUDID
-     * @return deviceOS version
-     */
-    String getDeviceOS(String deviceUDID);
 }

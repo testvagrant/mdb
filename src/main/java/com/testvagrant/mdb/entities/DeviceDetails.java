@@ -13,6 +13,7 @@ public class DeviceDetails {
     private OSVersion osVersion;
     private DeviceType deviceType;
     private Status status;
+    private String deviceUdid;
 
     public String getDeviceName() {
         return deviceName;
@@ -52,5 +53,13 @@ public class DeviceDetails {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public String getDeviceUdid() {
+        return deviceUdid;
+    }
+
+    public void setDeviceUdid(String deviceUdid) {
+        this.deviceUdid = deviceUdid;
     }
 }

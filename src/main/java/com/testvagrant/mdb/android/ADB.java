@@ -1,8 +1,6 @@
 package com.testvagrant.mdb.android;
 
-import com.testvagrant.mdb.MDB;
-
-import java.util.List;
+import com.testvagrant.mdb.core.MDB;
 
 public interface ADB extends MDB {
 

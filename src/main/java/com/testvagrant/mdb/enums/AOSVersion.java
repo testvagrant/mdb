@@ -22,7 +22,7 @@ public enum  AOSVersion implements OSVersion {
         this.name = name;
     }
 
-    public double getVersionNumber() {
+    public double getVersion() {
         return versionNumber;
     }
 
