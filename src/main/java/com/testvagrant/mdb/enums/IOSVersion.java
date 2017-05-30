@@ -1,5 +1,7 @@
 package com.testvagrant.mdb.enums;
 
+import com.testvagrant.commons.entities.device.OSVersion;
+
 public enum IOSVersion implements OSVersion {
 
     BIG_BEAR("Big Bear",2.0),

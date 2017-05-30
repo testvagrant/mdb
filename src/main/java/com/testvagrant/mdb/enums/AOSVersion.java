@@ -1,6 +1,8 @@
 package com.testvagrant.mdb.enums;
 
 
+import com.testvagrant.commons.entities.device.OSVersion;
+
 public enum  AOSVersion implements OSVersion {
 
     DONUT("Donut",1.6),

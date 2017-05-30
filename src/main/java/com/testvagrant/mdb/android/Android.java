@@ -1,14 +1,14 @@
 package com.testvagrant.mdb.android;
 
 
+import com.testvagrant.commons.entities.DeviceDetails;
 import com.testvagrant.commons.entities.SmartBOT;
+import com.testvagrant.commons.entities.device.Platform;
 import com.testvagrant.commons.entities.performance.Activity;
 import com.testvagrant.commons.entities.performance.CpuStatistics;
 import com.testvagrant.commons.entities.performance.MemoryStatistics;
 import com.testvagrant.mdb.Exceptions.ConnectedDevicesException;
 import com.testvagrant.mdb.core.Mobile;
-import com.testvagrant.mdb.entities.DeviceDetails;
-import com.testvagrant.mdb.enums.Platform;
 import com.testvagrant.mdb.helpers.AndroidHelper;
 
 import java.util.ArrayList;
@@ -57,17 +57,17 @@ public class Android extends Mobile implements ADB {
     }
 
 
-    public MemoryStatistics getMemoryStatistics(SmartBOT smartBOT) {
+    public MemoryStatistics getMemoryInfo(SmartBOT smartBOT) {
         DumpsysParser dumpsysParser = new DumpsysParser(smartBOT);
         return dumpsysParser.getMemoryInfo();
     }
 
-    public CpuStatistics getCpuStatistics(SmartBOT smartBOT) {
+    public CpuStatistics getCpuInfo(SmartBOT smartBOT) {
         DumpsysParser dumpsysParser = new DumpsysParser(smartBOT);
         return dumpsysParser.getCpuUsage();
     }
 
-    public Activity getCurrentActivity(SmartBOT smartBOT) {
+    public Activity getActivity(SmartBOT smartBOT) {
         return new DumpsysParser(smartBOT).getCurrentActivity();
     }
 

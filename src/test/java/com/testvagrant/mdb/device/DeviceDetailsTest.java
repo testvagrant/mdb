@@ -1,14 +1,12 @@
 package com.testvagrant.mdb.device;
 
 
+import com.testvagrant.commons.entities.DeviceDetails;
+import com.testvagrant.commons.entities.device.Platform;
 import com.testvagrant.mdb.android.ADB;
-import com.testvagrant.mdb.android.Android;
 import com.testvagrant.mdb.core.Mobile;
-import com.testvagrant.mdb.entities.DeviceDetails;
 import com.testvagrant.mdb.enums.AOSVersion;
 import com.testvagrant.mdb.enums.IOSVersion;
-import com.testvagrant.mdb.enums.OSVersion;
-import com.testvagrant.mdb.enums.Platform;
 import com.testvagrant.mdb.ios.IDB;
 import com.testvagrant.mdb.ios.IOS;
 import com.testvagrant.mdb.predicates.filters.DeviceTypeFilter;

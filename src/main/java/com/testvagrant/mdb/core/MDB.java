@@ -1,7 +1,7 @@
 package com.testvagrant.mdb.core;
 
 
-import com.testvagrant.mdb.entities.DeviceDetails;
+import com.testvagrant.commons.entities.DeviceDetails;
 
 import java.util.List;
 import java.util.function.Predicate;

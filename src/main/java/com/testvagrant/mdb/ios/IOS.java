@@ -1,10 +1,10 @@
 package com.testvagrant.mdb.ios;
 
+import com.testvagrant.commons.entities.DeviceDetails;
+import com.testvagrant.commons.entities.device.Platform;
 import com.testvagrant.mdb.Exceptions.ConnectedDevicesException;
 import com.testvagrant.mdb.Exceptions.UnsupportedPlatformException;
 import com.testvagrant.mdb.core.Mobile;
-import com.testvagrant.mdb.entities.DeviceDetails;
-import com.testvagrant.mdb.enums.Platform;
 import com.testvagrant.mdb.helpers.IOSHelper;
 import org.apache.commons.lang3.SystemUtils;
 

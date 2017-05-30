@@ -1,8 +1,8 @@
 package com.testvagrant.mdb.predicates.filters;
 
 
-import com.testvagrant.mdb.entities.DeviceDetails;
-import com.testvagrant.mdb.enums.DeviceType;
+import com.testvagrant.commons.entities.DeviceDetails;
+import com.testvagrant.commons.entities.device.DeviceType;
 import com.testvagrant.mdb.predicates.MobileFilters;
 
 import java.util.function.Predicate;

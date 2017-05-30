@@ -1,10 +1,10 @@
 package com.testvagrant.mdb.builders;
 
-import com.testvagrant.mdb.entities.DeviceDetails;
-import com.testvagrant.mdb.enums.DeviceType;
-import com.testvagrant.mdb.enums.OSVersion;
-import com.testvagrant.mdb.enums.Platform;
-import com.testvagrant.mdb.enums.Status;
+import com.testvagrant.commons.entities.DeviceDetails;
+import com.testvagrant.commons.entities.device.DeviceType;
+import com.testvagrant.commons.entities.device.OSVersion;
+import com.testvagrant.commons.entities.device.Platform;
+import com.testvagrant.commons.entities.device.Status;
 
 public class DeviceDetailsBuilder {
 

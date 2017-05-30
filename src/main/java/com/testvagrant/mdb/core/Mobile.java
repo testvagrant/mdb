@@ -1,11 +1,11 @@
 package com.testvagrant.mdb.core;
 
 
+import com.testvagrant.commons.entities.device.OSVersion;
+import com.testvagrant.commons.entities.device.Platform;
 import com.testvagrant.mdb.Exceptions.ConnectedDevicesException;
 import com.testvagrant.mdb.enums.AOSVersion;
 import com.testvagrant.mdb.enums.IOSVersion;
-import com.testvagrant.mdb.enums.OSVersion;
-import com.testvagrant.mdb.enums.Platform;
 import com.testvagrant.mdb.utils.Commands;
 import org.apache.commons.lang3.math.NumberUtils;
 
