@@ -15,7 +15,7 @@ public class DeviceDetailsBuilder {
     }
 
     public DeviceDetailsBuilder withDeviceUdid(String deviceUdid) {
-        deviceDetails.setDeviceUdid(deviceUdid);
+        deviceDetails.setUdid(deviceUdid);
         return this;
     }
 

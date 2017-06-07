@@ -36,7 +36,7 @@ public class AndroidHelper {
                         .withDeviceName(model)
                         .withPlatform(Platform.ANDROID)
                         .withDeviceType(DeviceType.EMULATOR)
-                        .withStatus(Status.AVAILABLE)
+                        .withStatus(Status.Available)
                         .withOSVersion(Mobile.getOSVersion(Platform.ANDROID,osVersion))
                         .build();
                 deviceDetails.add(emulator);
@@ -56,7 +56,7 @@ public class AndroidHelper {
                         .withPlatform(Platform.ANDROID)
                         .withOSVersion(Mobile.getOSVersion(Platform.ANDROID,osVersion))
                         .withDeviceType(DeviceType.DEVICE)
-                        .withStatus(Status.AVAILABLE)
+                        .withStatus(Status.Available)
                         .build();
                 deviceDetails.add(aDevice);
             }

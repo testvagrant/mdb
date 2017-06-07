@@ -58,7 +58,7 @@ public class IOSHelper {
                 .withDeviceUdid(udid)
                 .withPlatform(Platform.IOS)
                 .withDeviceType(DeviceType.SIMULATOR)
-                .withStatus(Status.AVAILABLE)
+                .withStatus(Status.Available)
                 .build();
     }
 
@@ -72,6 +72,7 @@ public class IOSHelper {
                 .withDeviceUdid(udid)
                 .withPlatform(Platform.IOS)
                 .withDeviceType(DeviceType.DEVICE)
+                .withStatus(Status.Available)
                 .build();
     }
 
