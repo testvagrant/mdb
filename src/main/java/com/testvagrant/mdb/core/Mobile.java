@@ -41,13 +41,23 @@ public abstract class Mobile {
     public static OSVersion getOSVersion(Platform platform, String versionNumber) {
         switch (platform) {
             case ANDROID:
-                Optional<AOSVersion> aosVersion = Arrays.stream(AOSVersion.values()).filter(OSVersion -> OSVersion.getVersion()== NumberUtils.toDouble(versionNumber)).findFirst();
+                Optional<AOSVersion> aosVersion = Arrays.stream(AOSVersion.values()).filter(OSVersion -> {
+                    try {
+                        OSVersion.setVersion(versionNumber);
+                        return OSVersion.getVersion().equals(versionNumber);
+                    } catch (Exception e) {
+                    }
+                    return false;
+                }).findFirst();
+
                 if(aosVersion.isPresent()) {
                     return aosVersion.get();
                 } else
                     throw new ConnectedDevicesException(String.format("Cannot read the Android OS version %s , is the device valid??",versionNumber));
             case IOS:
-                Optional<IOSVersion> iosVersion = Arrays.stream(IOSVersion.values()).filter(OSVersion -> OSVersion.getVersion()==NumberUtils.toDouble(versionNumber)).findFirst();
+                Optional<IOSVersion> iosVersion = Arrays.stream(IOSVersion.values()).filter(OSVersion ->{
+                   OSVersion.setVersion(versionNumber);
+                    return OSVersion.getVersion().equals(versionNumber);}).findFirst();
                 if(iosVersion.isPresent()) {
                     return iosVersion.get();
                 } else {

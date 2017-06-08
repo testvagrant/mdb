@@ -14,18 +14,19 @@ public class OSFilter extends MobileFilters {
     }
 
     public static Predicate<DeviceDetails> gt(OSVersion version) {
-        return deviceDetails -> deviceDetails.getOsVersion().getVersion()>version.getVersion();
+        return deviceDetails ->deviceDetails.getOsVersion().getBaseVersion()>version.getBaseVersion();
+
     }
 
     public static Predicate<DeviceDetails> gte(OSVersion version) {
-        return deviceDetails -> deviceDetails.getOsVersion().getVersion()>=version.getVersion();
+        return deviceDetails -> deviceDetails.getOsVersion().getBaseVersion()>=version.getBaseVersion();
     }
 
     public static Predicate<DeviceDetails> lt(OSVersion version) {
-        return deviceDetails -> deviceDetails.getOsVersion().getVersion()<version.getVersion();
+        return deviceDetails -> deviceDetails.getOsVersion().getBaseVersion()<version.getBaseVersion();
     }
 
     public static Predicate<DeviceDetails> lte(OSVersion version) {
-        return deviceDetails -> deviceDetails.getOsVersion().getVersion()<=version.getVersion();
+        return deviceDetails -> deviceDetails.getOsVersion().getBaseVersion()<=version.getBaseVersion();
     }
 }
