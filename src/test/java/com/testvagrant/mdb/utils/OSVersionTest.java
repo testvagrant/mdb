@@ -17,5 +17,7 @@ public class OSVersionTest {
         Assert.assertEquals(AOSVersion.ECLAIR,android);
         OSVersion ios =  Mobile.getOSVersion(Platform.IOS,"10.3");
         Assert.assertEquals(IOSVersion.ERIE,ios);
+        OSVersion ios1 =  Mobile.getOSVersion(Platform.IOS,"9.3");
+        Assert.assertEquals(IOSVersion.EAGLE,ios1);
     }
 }
