@@ -3,8 +3,10 @@ package com.testvagrant.mdb.android;
 import com.testvagrant.commons.entities.SmartBOT;
 import com.testvagrant.commons.entities.performance.Activity;
 import com.testvagrant.commons.entities.performance.CpuStatistics;
+import com.testvagrant.commons.entities.performance.Exceptions;
 import com.testvagrant.commons.entities.performance.MemoryStatistics;
 import com.testvagrant.mdb.core.CommandExecutor;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -30,7 +32,7 @@ public class DumpsysParser {
 
     public CpuStatistics getCpuUsage() {
         HashMap<String, String> userKernelInfo = new HashMap<>();
-        String cpuInfoCommand = String.format(GET_CPUINFO,smartBOT.getDeviceUdid(),smartBOT.getAppPackageName());
+        String cpuInfoCommand = String.format(GET_CPUINFO, smartBOT.getDeviceUdid(), smartBOT.getAppPackageName());
         List<String> cpuInfo = commandExecutor.exec(cpuInfoCommand).asList();
         for (String s : cpuInfo) {
             if (s.contains("TOTAL")) {
@@ -52,10 +54,10 @@ public class DumpsysParser {
 
     public MemoryStatistics getMemoryInfo() {
         MemoryStatistics memoryStatistics = new MemoryStatistics();
-        String memUsageCommand = String.format(GET_MEMINFO,smartBOT.getDeviceUdid(),smartBOT.getAppPackageName());
+        String memUsageCommand = String.format(GET_MEMINFO, smartBOT.getDeviceUdid(), smartBOT.getAppPackageName());
         List<String> memInfo = commandExecutor.exec(memUsageCommand).asList();
-        Optional<String> memoryDetails = memInfo.stream().filter(line->line.trim().startsWith("TOTAL ")).findFirst();
-        if(memoryDetails.isPresent()) {
+        Optional<String> memoryDetails = memInfo.stream().filter(line -> line.trim().startsWith("TOTAL ")).findFirst();
+        if (memoryDetails.isPresent()) {
             List<String> memoryTotal = Arrays.asList(memoryDetails.get().split(" "));
             List<String> collect = memoryTotal.stream().filter(line -> line.length() > 0).collect(toList());
             memoryStatistics.setTotal(convertToMB(collect.get(1)));
@@ -66,12 +68,12 @@ public class DumpsysParser {
 
 
     public Activity getCurrentActivity() {
-        String focussedActivityCommand = String.format(GET_FOCUSSED_ACTIVITY,smartBOT.getDeviceUdid());
+        String focussedActivityCommand = String.format(GET_FOCUSSED_ACTIVITY, smartBOT.getDeviceUdid());
         List<String> activityDetails = commandExecutor.exec(focussedActivityCommand).asList();
         Optional<String> mCurrentFocus = activityDetails.stream().filter(line -> line.trim().startsWith("mCurrentFocus")).findFirst();
         Activity activity = new Activity();
-        if(mCurrentFocus.isPresent()) {
-            if(!mCurrentFocus.get().contains("null")) {
+        if (mCurrentFocus.isPresent()) {
+            if (!mCurrentFocus.get().contains("null")) {
                 String focussedActivity = Arrays.stream(mCurrentFocus.get().split("\\.")).filter(word -> word.endsWith("}")).findFirst().get().replaceAll("}", "");
                 previousActivity = focussedActivity;
                 activity.setFocussedActivity(focussedActivity);
@@ -79,6 +81,34 @@ public class DumpsysParser {
                 activity.setFocussedActivity(previousActivity);
             }
         }
-       return activity;
+        return activity;
+    }
+
+    public Exceptions getException() {
+        String pid = "";
+        String errorsCommand = String.format(GET_ERRORS, smartBOT.getDeviceUdid());
+        List<String> errors = commandExecutor.exec(errorsCommand).asList();
+        List<String> adbLogs = new ArrayList<>();
+        Optional<String> packageLine = errors.stream().filter(line -> line.contains("Process: " + smartBOT.getAppPackageName())).findFirst();
+        if (packageLine.isPresent()) {
+            pid = packageLine.get().split("[\\(\\)]")[1];
+        }
+
+        Exceptions exception = new Exceptions();
+        for (String line : errors) {
+            if (line.contains("(") && line.contains(")"))
+                if (line.split("[\\(\\)]")[1].contains(pid)) {
+                    adbLogs.add(line);
+                }
+        }
+
+        String stackTrace = String.join("\n", adbLogs);
+        if (stackTrace.length() > 0) {
+            exception.setStacktrace(stackTrace);
+            exception.setActivityName(stackTrace.split(smartBOT.getAppPackageName() + ".")[2]
+                    .split("\\$")[0]);
+            return exception;
+        } else
+            return null;
     }
 }

@@ -6,6 +6,7 @@ import com.testvagrant.commons.entities.SmartBOT;
 import com.testvagrant.commons.entities.device.Platform;
 import com.testvagrant.commons.entities.performance.Activity;
 import com.testvagrant.commons.entities.performance.CpuStatistics;
+import com.testvagrant.commons.entities.performance.Exceptions;
 import com.testvagrant.commons.entities.performance.MemoryStatistics;
 import com.testvagrant.mdb.Exceptions.ConnectedDevicesException;
 import com.testvagrant.mdb.core.Mobile;
@@ -71,4 +72,7 @@ public class Android extends Mobile implements ADB {
         return new DumpsysParser(smartBOT).getCurrentActivity();
     }
 
+    public Exceptions getException(SmartBOT smartBOT){
+        return new DumpsysParser(smartBOT).getException();
+    }
 }

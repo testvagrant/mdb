@@ -11,6 +11,7 @@ public interface Commands {
         String GET_CPUINFO = "adb -s %s shell dumpsys cpuinfo %s";
         String GET_FOCUSSED_ACTIVITY = "adb -s %s shell dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp'";
         String CPU_REGEX = "([0-9]+(\\.[0-9]+)?%)\\s+(user)\\s+(\\+)\\s+([0-9]+(\\.[0-9]+)?%)\\s+(kernel)(.*)";
+        String GET_ERRORS = "adb -s %s logcat -d -v process *:E";
     }
 
     interface Instruments {
@@ -34,7 +35,7 @@ public interface Commands {
 
     interface Paths {
         String USER_DIR = System.getProperty("user.dir");
-        String VIDEOS_PATH = USER_DIR+"/build/videos/";
+        String VIDEOS_PATH = USER_DIR + "/build/videos/";
     }
 
     interface DumpSys {
