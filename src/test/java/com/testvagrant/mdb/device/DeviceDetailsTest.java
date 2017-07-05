@@ -4,6 +4,7 @@ package com.testvagrant.mdb.device;
 import com.testvagrant.commons.entities.DeviceDetails;
 import com.testvagrant.commons.entities.device.Platform;
 import com.testvagrant.mdb.android.ADB;
+import com.testvagrant.mdb.android.Android;
 import com.testvagrant.mdb.core.Mobile;
 import com.testvagrant.mdb.enums.AOSVersion;
 import com.testvagrant.mdb.enums.IOSVersion;
@@ -12,6 +13,7 @@ import com.testvagrant.mdb.ios.IOS;
 import com.testvagrant.mdb.predicates.filters.DeviceTypeFilter;
 import com.testvagrant.mdb.predicates.filters.OSFilter;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -29,13 +31,15 @@ public class DeviceDetailsTest extends DeviceDetailsBase {
 
     @Before
     public void before() {
-//        android = new Android();
+
         ios = new IOS();
         when(mobile.collectDevicesOutput(Platform.ANDROID)).thenReturn(androidProcessLog());
         when(mobile.collectDevicesOutput(Platform.IOS)).thenReturn(iOSProcessLog());
     }
-    @Test
+
+    @Ignore
     public void androidDeviceDetails() {
+        android = new Android();
         List<DeviceDetails> devices = android.getDevices(OSFilter.gte(AOSVersion.LOLLIPOP));
         System.out.println(devices);
     }
@@ -45,7 +49,6 @@ public class DeviceDetailsTest extends DeviceDetailsBase {
         List<DeviceDetails> devices = ios.getDevices(OSFilter.eq(IOSVersion.EAGLE), DeviceTypeFilter.ofTypeSimulators());
         System.out.println(devices);
     }
-
 
 
 }
