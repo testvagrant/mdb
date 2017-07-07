@@ -44,7 +44,7 @@ signing {
 
 group = "com.testvagrant.mdb"
 archivesBaseName = "mdb"
-version = "1.0.0"
+version = "1.0.1"
 
 uploadArchives {
     repositories {
