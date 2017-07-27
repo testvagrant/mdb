@@ -11,7 +11,7 @@ public enum IOSVersion implements OSVersion {
     SUGARBOWL("Sugarbowl",2.1,"2.1"),
     TIMBERLINE("Timberline",2.2,"2.2"),
     KIRKWOOD("Kirkwood",3.0,"3.0"),
-    NORTHSTAR("Northstar",3.1,"3.1"),
+//    NORTHSTAR("Northstar",3.1,"3.1"),
     WILDCAT("Wildcat",3.2,"3.2"),
     APEX("Apex",4.0,"4.0"),
     BAKER("Baker",4.1,"4.1"),
@@ -35,7 +35,8 @@ public enum IOSVersion implements OSVersion {
     WHITETAIL("Whitetail",10.0,"10.0"),
     BUTLER("Butler",10.1,"10.1"),
     CORRY("Corry",10.2,"10.2"),
-    ERIE("Erie",10.3,"10.3");
+    ERIE("Erie",10.3,"(10.3|10.3.1|10.3.2|10.3.3)"),
+    TIGRIS("Tigris",11.0,"11.0");
 
 
     private String versionRegex;

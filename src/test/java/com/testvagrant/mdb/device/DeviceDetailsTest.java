@@ -46,7 +46,7 @@ public class DeviceDetailsTest extends DeviceDetailsBase {
 
     @Test
     public void iosDeviceDetails() {
-        List<DeviceDetails> devices = ios.getDevices(OSFilter.eq(IOSVersion.EAGLE), DeviceTypeFilter.ofTypeSimulators());
+        List<DeviceDetails> devices = ios.getDevices(OSFilter.eq(IOSVersion.TIGRIS), DeviceTypeFilter.ofTypeSimulators());
         System.out.println(devices);
     }
 
