@@ -61,7 +61,6 @@ public class AndroidHelper {
                 deviceDetails.add(aDevice);
             }
         }
-
     }
 
     private String getUID(String process) {
@@ -71,12 +70,12 @@ public class AndroidHelper {
         return uid;
     }
 
-    private String getModel(String UID) {
+    public String getModel(String UID) {
         String command = String.format(GET_DEVICE_MODEL, UID);
         return commandExecutor.exec(command).asLine().replace("\n", "");
     }
 
-    private String getOSVersion(String UID) {
+    public String getOSVersion(String UID) {
         String command = String.format(GET_DEVICE_OS, UID);
         return commandExecutor.exec(command).asLine().replace("\n", "");
     }

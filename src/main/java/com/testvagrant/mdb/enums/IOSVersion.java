@@ -32,7 +32,7 @@ public enum IOSVersion implements OSVersion {
     BOULDER("Bourlder",9.1,"9.1"),
     CASTLEROCK("Castlerock",9.2,"9.2"),
     EAGLE("Eagle",9.3,"9.3"),
-    WHITETAIL("Whitetail",10.0,"10.0"),
+    WHITETAIL("Whitetail",10.0,"(10.0|10.0.2)"),
     BUTLER("Butler",10.1,"10.1"),
     CORRY("Corry",10.2,"10.2"),
     ERIE("Erie",10.3,"(10.3|10.3.1|10.3.2|10.3.3)"),
@@ -53,7 +53,11 @@ public enum IOSVersion implements OSVersion {
         Pattern pattern = Pattern.compile(versionRegex);
         Matcher matcher = pattern.matcher(version);
         if(matcher.find()) {
-            this.version = version;
+            if(versionRegex.contains(version)) {
+                this.version = version;
+            } else {
+                this.version = version;
+            }
         } else {
             this.version = "0.0";
         }

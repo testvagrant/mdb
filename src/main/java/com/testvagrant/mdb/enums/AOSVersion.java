@@ -15,7 +15,7 @@ public enum  AOSVersion implements OSVersion {
     HONEYCOMB("Honeycomb",3.0,"(3.0|3.1|3.2|3.2.1|3.2.2|3.2.3|3.2.4|3.2.5|3.2.6)"),
     ICE_CREAM_SANDWICH("Ice Cream Sandwich",4.0,"(4.0|4.0.1|4.0.2|4.0.3|4.0.4)"),
     JELLY_BEAN("Jelly Bean",4.1,"(4.1|4.1.1|4.1.2|4.2|4.2.1|4.2.2|4.3|4.3.1)"),
-    KITKAT("Kitkat",4.4,"(|4.4|4.4.1|4.4.2|4.4.3|4.4.4)"),
+    KITKAT("Kitkat",4.4,"(4.4|4.4.1|4.4.2|4.4.3|4.4.4)"),
     LOLLIPOP("Lollipop",5.0,"(5.0|5.0.1|5.0.2|5.1|5.1.1)"),
     MARSHMALLOW("Marshmallow",6.0,"(6.0|6.0.1)"),
     NOUGAT("Nougat",7.0,"(7.0|7.1|7.1.1|7.1.2)");
@@ -34,7 +34,11 @@ public enum  AOSVersion implements OSVersion {
         Pattern pattern = Pattern.compile(versionRegex);
         Matcher matcher = pattern.matcher(version);
         if(matcher.find()) {
-            this.version = version;
+            if(versionRegex.contains(version)) {
+                this.version = version;
+            } else {
+                this.version = "0.0";
+            }
         } else {
             this.version = "0.0";
         }

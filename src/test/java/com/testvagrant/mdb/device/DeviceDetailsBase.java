@@ -14,6 +14,12 @@ public class DeviceDetailsBase {
         return processLog;
     }
 
+    protected List<String> latestAndroidOSProcessLog() {
+        List<String> processLog = new ArrayList<>();
+        processLog.add("ZY223D7GPB             device usb:336592896X product:athene_f model:Moto_G__5_ device:athene_f");
+        return processLog;
+    }
+
 
     protected List<String> iOSProcessLog() {
         List<String> iosProcessLog = new ArrayList<>();
