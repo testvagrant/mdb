@@ -7,7 +7,7 @@ import com.testvagrant.commons.entities.device.Platform;
 import com.testvagrant.commons.entities.device.Status;
 import com.testvagrant.mdb.builders.DeviceDetailsBuilder;
 import com.testvagrant.mdb.core.CommandExecutor;
-import com.testvagrant.mdb.core.Mobile;
+import com.testvagrant.mdb.utils.OSVersionMatcher;
 
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class AndroidHelper {
                         .withPlatform(Platform.ANDROID)
                         .withDeviceType(DeviceType.EMULATOR)
                         .withStatus(Status.Available)
-                        .withOSVersion(Mobile.getOSVersion(Platform.ANDROID,osVersion))
+                        .withOSVersion(new OSVersionMatcher().getOSVersion(Platform.ANDROID,osVersion))
                         .build();
                 deviceDetails.add(emulator);
             }
@@ -54,7 +54,7 @@ public class AndroidHelper {
                         .withDeviceUdid(udid)
                         .withDeviceName(model)
                         .withPlatform(Platform.ANDROID)
-                        .withOSVersion(Mobile.getOSVersion(Platform.ANDROID,osVersion))
+                        .withOSVersion(new OSVersionMatcher().getOSVersion(Platform.ANDROID,osVersion))
                         .withDeviceType(DeviceType.DEVICE)
                         .withStatus(Status.Available)
                         .build();

@@ -1,11 +1,9 @@
 package com.testvagrant.mdb.enums;
 
-import com.testvagrant.commons.entities.device.OSVersion;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public enum IOSVersion implements OSVersion {
+public enum IOSVersion implements Version {
 
     BIG_BEAR("Big Bear",2.0,"2.0"),
     SUGARBOWL("Sugarbowl",2.1,"2.1"),
@@ -43,6 +41,7 @@ public enum IOSVersion implements OSVersion {
     private String name;
     private String version;
     private double baseVersion;
+
     IOSVersion(String name, double baseVersion, String versionRegex) {
         this.name = name;
         this.baseVersion = baseVersion;

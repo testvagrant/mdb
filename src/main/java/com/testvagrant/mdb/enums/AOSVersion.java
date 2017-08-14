@@ -1,12 +1,10 @@
 package com.testvagrant.mdb.enums;
 
 
-import com.testvagrant.commons.entities.device.OSVersion;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public enum  AOSVersion implements OSVersion {
+public enum  AOSVersion implements Version {
 
     DONUT("Donut",1.6,"1.6"),
     ECLAIR("Eclair",2.0,"(2.0|2.0.1|2.1)"),
