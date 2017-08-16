@@ -24,27 +24,32 @@ public class AOSVersionTest {
 
     @Test
     public void verifyAllTheAOSVersions() {
-        assertEquals(AOSVersion.DONUT, new OSVersionMatcher().getOSVersion(platform,v1));
-        assertEquals(AOSVersion.ECLAIR, new OSVersionMatcher().getOSVersion(platform,v2));
-        assertEquals(AOSVersion.ECLAIR, new OSVersionMatcher().getOSVersion(platform,v3));
-        assertEquals(AOSVersion.FROYO, new OSVersionMatcher().getOSVersion(platform,v4));
-        assertEquals(AOSVersion.FROYO,new OSVersionMatcher().getOSVersion(platform,v5));
-        assertEquals(AOSVersion.GINGERBREAD,new OSVersionMatcher().getOSVersion(platform,v6));
-        assertEquals(AOSVersion.GINGERBREAD,new OSVersionMatcher().getOSVersion(platform,v7));
-        assertEquals(AOSVersion.GINGERBREAD,new OSVersionMatcher().getOSVersion(platform,v8));
-        assertEquals(AOSVersion.HONEYCOMB,new OSVersionMatcher().getOSVersion(platform,v9));
-        assertEquals(AOSVersion.HONEYCOMB,new OSVersionMatcher().getOSVersion(platform,v10));
-        assertEquals(AOSVersion.ICE_CREAM_SANDWICH,new OSVersionMatcher().getOSVersion(platform,v11));
-        assertEquals(AOSVersion.ICE_CREAM_SANDWICH,new OSVersionMatcher().getOSVersion(platform,v12));
-        assertEquals(AOSVersion.JELLY_BEAN,new OSVersionMatcher().getOSVersion(platform,v13));
-        assertEquals(AOSVersion.JELLY_BEAN,new OSVersionMatcher().getOSVersion(platform,v14));
-        assertEquals(AOSVersion.KITKAT,new OSVersionMatcher().getOSVersion(platform,v15));
-        assertEquals(AOSVersion.KITKAT,new OSVersionMatcher().getOSVersion(platform,v16));
-        assertEquals(AOSVersion.LOLLIPOP,new OSVersionMatcher().getOSVersion(platform,v17));
-        assertEquals(AOSVersion.LOLLIPOP,new OSVersionMatcher().getOSVersion(platform,v18));
-        assertEquals(AOSVersion.MARSHMALLOW,new OSVersionMatcher().getOSVersion(platform,v19));
-        assertEquals(AOSVersion.MARSHMALLOW,new OSVersionMatcher().getOSVersion(platform,v20));
-        assertEquals(AOSVersion.NOUGAT,new OSVersionMatcher().getOSVersion(platform,v21));
-        assertEquals(AOSVersion.NOUGAT,new OSVersionMatcher().getOSVersion(platform,v22));
+        assertEquals(AOSVersion.DONUT, getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v1).getName()));
+        assertEquals(AOSVersion.ECLAIR, getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v2).getName()));
+        assertEquals(AOSVersion.ECLAIR, getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v3).getName()));
+        assertEquals(AOSVersion.FROYO, getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v4).getName()));
+        assertEquals(AOSVersion.FROYO,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v5).getName()));
+        assertEquals(AOSVersion.GINGERBREAD,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v6).getName()));
+        assertEquals(AOSVersion.GINGERBREAD,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v7).getName()));
+        assertEquals(AOSVersion.GINGERBREAD,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v8).getName()));
+        assertEquals(AOSVersion.HONEYCOMB,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v9).getName()));
+        assertEquals(AOSVersion.HONEYCOMB,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v10).getName()));
+        assertEquals(AOSVersion.ICE_CREAM_SANDWICH,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v11).getName()));
+        assertEquals(AOSVersion.ICE_CREAM_SANDWICH,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v12).getName()));
+        assertEquals(AOSVersion.JELLY_BEAN,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v13).getName()));
+        assertEquals(AOSVersion.JELLY_BEAN,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v14).getName()));
+        assertEquals(AOSVersion.KITKAT,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v15).getName()));
+        assertEquals(AOSVersion.KITKAT,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v16).getName()));
+        assertEquals(AOSVersion.LOLLIPOP,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v17).getName()));
+        assertEquals(AOSVersion.LOLLIPOP,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v18).getName()));
+        assertEquals(AOSVersion.MARSHMALLOW,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v19).getName()));
+        assertEquals(AOSVersion.MARSHMALLOW,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v20).getName()));
+        assertEquals(AOSVersion.NOUGAT,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v21).getName()));
+        assertEquals(AOSVersion.NOUGAT,getAOSVersion(new OSVersionMatcher().getOSVersion(platform,v22).getName()));
+    }
+
+
+    private AOSVersion getAOSVersion(String name) {
+        return AOSVersion.valueOf(name.toUpperCase().replace(" ","_"));
     }
 }

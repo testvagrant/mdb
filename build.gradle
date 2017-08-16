@@ -24,6 +24,12 @@ dependencies {
 
 }
 
+
+test {
+    // enable TestNG support (default is JUnit)
+    useTestNG()
+}
+
 task javadocJar(type: Jar) {
     classifier = 'javadoc'
     from javadoc
