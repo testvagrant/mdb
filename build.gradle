@@ -71,12 +71,12 @@ uploadArchives {
                 packaging 'jar'
                 // optionally artifactId can be defined here
                 description 'A application used as an example on how to set up pushing  its components to the Central Repository.'
-                url 'https://bitbucket.org/testvagrant/mdb'
+                url 'https://github.com/testvagrant/mdb'
 
                 scm {
-                    connection 'scm:https://sukesh_testvagrant@bitbucket.org/testvagrant/mdb.git'
+                    connection 'scm:https://github.com/testvagrant/mdb.git'
 //                    developerConnection 'scm:svn:https://foo.googlecode.com/svn/trunk/'
-                    url 'https://bitbucket.org/testvagrant/mdb'
+                    url 'https://github.com/testvagrant/mdb'
                 }
 
                 licenses {
