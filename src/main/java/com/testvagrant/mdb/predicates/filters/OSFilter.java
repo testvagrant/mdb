@@ -10,7 +10,7 @@ import java.util.function.Predicate;
 public class OSFilter extends MobileFilters {
 
     public static Predicate<DeviceDetails> eq(OSVersion osVersion) {
-        return deviceDetails -> deviceDetails.getOsVersion().equals(osVersion);
+        return deviceDetails -> deviceDetails.getOsVersion().getVersion().equals(osVersion.getVersion());
     }
 
     public static Predicate<DeviceDetails> gt(OSVersion version) {

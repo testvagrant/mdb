@@ -34,7 +34,7 @@ public enum IOSVersion implements Version {
     BUTLER("Butler",10.1,"10.1"),
     CORRY("Corry",10.2,"10.2"),
     ERIE("Erie",10.3,"(10.3|10.3.1|10.3.2|10.3.3)"),
-    TIGRIS("Tigris",11.0,"11.0");
+    TIGRIS("Tigris",11.0,"(11.0|11.0.1)");
 
 
     private String versionRegex;

@@ -3,3 +3,4 @@
 build
 mdb.iml
 gradle.properties
+out/

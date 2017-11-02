@@ -2,8 +2,11 @@ package com.testvagrant.mdb.device;
 
 import com.testvagrant.commons.entities.DeviceDetails;
 import com.testvagrant.commons.entities.device.DeviceType;
+import com.testvagrant.commons.entities.device.OSVersion;
+import com.testvagrant.commons.entities.device.Platform;
 import com.testvagrant.mdb.enums.IOSVersion;
 import com.testvagrant.mdb.helpers.IOSHelper;
+import com.testvagrant.mdb.utils.OSVersionMatcher;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -37,6 +40,13 @@ public class IOSHelperTest extends DeviceDetailsBase {
         });
     }
 
+
+    @Test
+    public void iosVersionTest() {
+        OSVersion version = new OSVersionMatcher().getOSVersion(Platform.IOS,"10.3.1");
+        System.out.println(version.getName());
+        Assert.assertEquals(version.getVersion(),"10.3.1");
+    }
 
     private IOSVersion getIOSVersion(String name){
         return IOSVersion.valueOf(name.toUpperCase().replace(" ","_"));

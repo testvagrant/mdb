@@ -14,9 +14,10 @@ public enum  AOSVersion implements Version {
     ICE_CREAM_SANDWICH("Ice Cream Sandwich",4.0,"(4.0|4.0.1|4.0.2|4.0.3|4.0.4)"),
     JELLY_BEAN("Jelly Bean",4.1,"(4.1|4.1.1|4.1.2|4.2|4.2.1|4.2.2|4.3|4.3.1)"),
     KITKAT("Kitkat",4.4,"(4.4|4.4.1|4.4.2|4.4.3|4.4.4)"),
-    LOLLIPOP("Lollipop",5.0,"(5.0|5.0.1|5.0.2|5.1|5.1.1)"),
+    LOLLIPOP("Lollipop",5.0,"(5.0|5.0.0|5.0.1|5.0.2|5.1|5.1.1)"),
     MARSHMALLOW("Marshmallow",6.0,"(6.0|6.0.1)"),
-    NOUGAT("Nougat",7.0,"(7.0|7.1|7.1.1|7.1.2)");
+    NOUGAT("Nougat",7.0,"(7.0|7.1|7.1.1|7.1.2)"),
+    OREO("Oreo",8.0,"(8.0|8.0.0|8.0.1)");
 
     private String versionRegex;
     private String version;
