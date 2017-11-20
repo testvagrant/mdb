@@ -9,7 +9,7 @@ public enum IOSVersion implements Version {
     SUGARBOWL("Sugarbowl",2.1,"2.1"),
     TIMBERLINE("Timberline",2.2,"2.2"),
     KIRKWOOD("Kirkwood",3.0,"3.0"),
-//    NORTHSTAR("Northstar",3.1,"3.1"),
+    NORTHSTAR("Northstar",3.1,"3.1"),
     WILDCAT("Wildcat",3.2,"3.2"),
     APEX("Apex",4.0,"4.0"),
     BAKER("Baker",4.1,"4.1"),

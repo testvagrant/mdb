@@ -21,7 +21,6 @@ public class CommandExecutor {
         Process process;
         Runtime rt = Runtime.getRuntime();
         try {
-            System.out.println("Running command ---- " + command);
             process = rt.exec(command);
             BufferedReader stdInput = new BufferedReader(new InputStreamReader(
                     process.getInputStream()));
@@ -38,7 +37,6 @@ public class CommandExecutor {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("command output -- " + log.toString());
         return this;
     }
 

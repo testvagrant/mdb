@@ -6,10 +6,7 @@ import com.testvagrant.commons.entities.performance.CpuStatistics;
 import com.testvagrant.commons.entities.performance.Exceptions;
 import com.testvagrant.commons.entities.performance.MemoryStatistics;
 import com.testvagrant.mdb.core.CommandExecutor;
-import org.apache.commons.lang3.StringUtils;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -37,7 +34,6 @@ public class DumpsysParser {
         for (String s : cpuInfo) {
             if (s.contains("TOTAL")) {
                 String cpuUsageOutput = s.split(":")[1].trim();
-                System.out.println("String to be parsed -- " + cpuUsageOutput);
                 Pattern p = Pattern.compile(CPU_REGEX);
                 Matcher matcher = p.matcher(cpuUsageOutput);
                 matcher.find();

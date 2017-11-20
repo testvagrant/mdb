@@ -4,7 +4,6 @@ import com.testvagrant.commons.entities.DeviceDetails;
 import com.testvagrant.commons.entities.device.DeviceType;
 import com.testvagrant.commons.entities.device.Status;
 import com.testvagrant.mdb.device.DeviceDetailsBase;
-import com.testvagrant.mdb.enums.AOSVersion;
 import com.testvagrant.mdb.helpers.AndroidHelper;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -46,24 +45,24 @@ public class AndroidHelperTest extends DeviceDetailsBase {
     @Test
     public void onAValidCommandExecutionDeviceDetailsShouldBeCorrect() {
         DeviceDetails deviceDetails = deviceDetailsList.get(0);
-        Assert.assertEquals("Moto G(4)",deviceDetails.getDeviceName());
+        Assert.assertEquals(deviceDetails.getDeviceName(),"Moto G(4)");
         Assert.assertEquals(DeviceType.DEVICE,deviceDetails.getDeviceType());
-        Assert.assertEquals(AOSVersion.NOUGAT,AOSVersion.valueOf(deviceDetails.getOsVersion().getName().toUpperCase()));
+        Assert.assertEquals(deviceDetails.getOsVersion(),"7.0");
         Assert.assertEquals(Status.Available,deviceDetails.getStatus());
     }
 
     @Test
     public void onAValidCommandExecutionEmulatorDetailsShouldBeCorrect() {
-        List<DeviceDetails> collectedDevices = deviceDetailsList.stream().filter(deviceDetails -> deviceDetails.getOsVersion().getName().equals(AOSVersion.LOLLIPOP.getName())).collect(Collectors.toList());
-        Assert.assertEquals(2,collectedDevices.size());
+        List<DeviceDetails> collectedDevices = deviceDetailsList.stream().filter(deviceDetails -> deviceDetails.getOsVersion().equals("5.0")).collect(Collectors.toList());
+        Assert.assertEquals(collectedDevices.size(),1);
     }
 
 
     @Test
     public void differentPlatformVersionsForSamePlatformShouldBeRecorded() {
-        List<DeviceDetails> vFiveO1 = deviceDetailsList.stream().filter(deviceDetails -> deviceDetails.getOsVersion().getVersion().equals("5.0.1")).collect(Collectors.toList());
-        Assert.assertEquals(1, vFiveO1.size());
-        List<DeviceDetails> vFiveO = deviceDetailsList.stream().filter(deviceDetails -> deviceDetails.getOsVersion().getVersion().equals("5.0")).collect(Collectors.toList());
-        Assert.assertEquals(1, vFiveO.size());
+        List<DeviceDetails> vFiveO1 = deviceDetailsList.stream().filter(deviceDetails -> deviceDetails.getOsVersion().equals("5.0.1")).collect(Collectors.toList());
+        Assert.assertEquals(vFiveO1.size(),1);
+        List<DeviceDetails> vFiveO = deviceDetailsList.stream().filter(deviceDetails -> deviceDetails.getOsVersion().equals("5.0")).collect(Collectors.toList());
+        Assert.assertEquals( vFiveO.size(),1);
     }
 }

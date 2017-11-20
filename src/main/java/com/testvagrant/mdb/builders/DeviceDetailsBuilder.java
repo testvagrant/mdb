@@ -2,7 +2,6 @@ package com.testvagrant.mdb.builders;
 
 import com.testvagrant.commons.entities.DeviceDetails;
 import com.testvagrant.commons.entities.device.DeviceType;
-import com.testvagrant.commons.entities.device.OSVersion;
 import com.testvagrant.commons.entities.device.Platform;
 import com.testvagrant.commons.entities.device.Status;
 
@@ -24,7 +23,7 @@ public class DeviceDetailsBuilder {
         return this;
     }
 
-    public DeviceDetailsBuilder withOSVersion(OSVersion osVersion) {
+    public DeviceDetailsBuilder withOSVersion(String osVersion) {
         deviceDetails.setOsVersion(osVersion);
         return this;
     }

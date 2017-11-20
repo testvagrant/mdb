@@ -8,7 +8,6 @@ import com.testvagrant.commons.entities.device.Status;
 import com.testvagrant.mdb.builders.DeviceDetailsBuilder;
 import com.testvagrant.mdb.core.CommandExecutor;
 import com.testvagrant.mdb.enums.XCodeVersion;
-import com.testvagrant.mdb.utils.OSVersionMatcher;
 
 import java.util.List;
 
@@ -52,7 +51,7 @@ public class IOSHelper {
         String deviceName = getDeviceName(line);
         return new DeviceDetailsBuilder()
                 .withDeviceName(deviceName)
-                .withOSVersion(new OSVersionMatcher().getOSVersion(Platform.IOS,iosVersion))
+                .withOSVersion(iosVersion)
                 .withDeviceUdid(udid)
                 .withPlatform(Platform.IOS)
                 .withDeviceType(DeviceType.SIMULATOR)
@@ -66,7 +65,7 @@ public class IOSHelper {
         String deviceName = getDeviceName(line);
         return new DeviceDetailsBuilder()
                 .withDeviceName(deviceName)
-                .withOSVersion(new OSVersionMatcher().getOSVersion(Platform.IOS,iosVersion))
+                .withOSVersion(iosVersion)
                 .withDeviceUdid(udid)
                 .withPlatform(Platform.IOS)
                 .withDeviceType(DeviceType.DEVICE)
