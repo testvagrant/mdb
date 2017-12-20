@@ -46,23 +46,23 @@ public class AndroidHelperTest extends DeviceDetailsBase {
     public void onAValidCommandExecutionDeviceDetailsShouldBeCorrect() {
         DeviceDetails deviceDetails = deviceDetailsList.get(0);
         Assert.assertEquals(deviceDetails.getDeviceName(),"Moto G(4)");
-        Assert.assertEquals(DeviceType.DEVICE,deviceDetails.getDeviceType());
-        Assert.assertEquals(deviceDetails.getOsVersion(),"7.0");
+        Assert.assertEquals(DeviceType.DEVICE,deviceDetails.getRunsOn());
+        Assert.assertEquals(deviceDetails.getPlatformVersion(),"7.0");
         Assert.assertEquals(Status.Available,deviceDetails.getStatus());
     }
 
     @Test
     public void onAValidCommandExecutionEmulatorDetailsShouldBeCorrect() {
-        List<DeviceDetails> collectedDevices = deviceDetailsList.stream().filter(deviceDetails -> deviceDetails.getOsVersion().equals("5.0")).collect(Collectors.toList());
+        List<DeviceDetails> collectedDevices = deviceDetailsList.stream().filter(deviceDetails -> deviceDetails.getPlatformVersion().equals("5.0")).collect(Collectors.toList());
         Assert.assertEquals(collectedDevices.size(),1);
     }
 
 
     @Test
     public void differentPlatformVersionsForSamePlatformShouldBeRecorded() {
-        List<DeviceDetails> vFiveO1 = deviceDetailsList.stream().filter(deviceDetails -> deviceDetails.getOsVersion().equals("5.0.1")).collect(Collectors.toList());
+        List<DeviceDetails> vFiveO1 = deviceDetailsList.stream().filter(deviceDetails -> deviceDetails.getPlatformVersion().equals("5.0.1")).collect(Collectors.toList());
         Assert.assertEquals(vFiveO1.size(),1);
-        List<DeviceDetails> vFiveO = deviceDetailsList.stream().filter(deviceDetails -> deviceDetails.getOsVersion().equals("5.0")).collect(Collectors.toList());
+        List<DeviceDetails> vFiveO = deviceDetailsList.stream().filter(deviceDetails -> deviceDetails.getPlatformVersion().equals("5.0")).collect(Collectors.toList());
         Assert.assertEquals( vFiveO.size(),1);
     }
 }

@@ -24,12 +24,12 @@ public class DeviceDetailsBuilder {
     }
 
     public DeviceDetailsBuilder withOSVersion(String osVersion) {
-        deviceDetails.setOsVersion(osVersion);
+        deviceDetails.setPlatformVersion(osVersion);
         return this;
     }
 
     public DeviceDetailsBuilder withDeviceType(DeviceType deviceType) {
-        deviceDetails.setDeviceType(deviceType);
+        deviceDetails.setRunsOn(deviceType);
         return this;
     }
 

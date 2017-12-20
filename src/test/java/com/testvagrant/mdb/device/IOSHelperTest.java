@@ -30,13 +30,13 @@ public class IOSHelperTest extends DeviceDetailsBase {
         iosHelper.initIDevices(iOSProcessLog());
         iosHelper.initSimulators(iOSProcessLog());
         Assert.assertEquals(5, deviceDetailsList.size());
-        List<DeviceDetails> physicalDevices = deviceDetailsList.stream().filter(deviceDetails -> deviceDetails.getDeviceType().equals(DeviceType.DEVICE)).collect(Collectors.toList());
-        List<DeviceDetails> simulatorDevices = deviceDetailsList.stream().filter(deviceDetails -> deviceDetails.getDeviceType().equals(DeviceType.SIMULATOR)).collect(Collectors.toList());
+        List<DeviceDetails> physicalDevices = deviceDetailsList.stream().filter(deviceDetails -> deviceDetails.getRunsOn().equals(DeviceType.DEVICE)).collect(Collectors.toList());
+        List<DeviceDetails> simulatorDevices = deviceDetailsList.stream().filter(deviceDetails -> deviceDetails.getRunsOn().equals(DeviceType.SIMULATOR)).collect(Collectors.toList());
         Assert.assertEquals(1, physicalDevices.size());
         Assert.assertEquals(4, simulatorDevices.size());
-        Assert.assertEquals(physicalDevices.get(0).getOsVersion(),"10.0.2");
+        Assert.assertEquals(physicalDevices.get(0).getPlatformVersion(),"10.0.2");
         simulatorDevices.forEach(simulatorDevice -> {
-            Assert.assertEquals(simulatorDevice.getOsVersion(), "9.3");
+            Assert.assertEquals(simulatorDevice.getPlatformVersion(), "9.3");
         });
     }
 

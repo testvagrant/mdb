@@ -22,6 +22,6 @@ public class DeviceTypeFilter extends MobileFilters {
     }
 
     private static Predicate<DeviceDetails> getDeviceTypePredicate(DeviceType deviceType) {
-        return deviceDetails -> deviceDetails.getDeviceType().equals(deviceType);
+        return deviceDetails -> deviceDetails.getRunsOn().equals(deviceType);
     }
 }
